@@ -20,10 +20,6 @@ for ($i=0; $i < $nbThread; $i++) {
 	$aFileDescriptors[$i] = $tmpFile;
 }
 
-// pdo init
-$db = new PDO('mysql:host=localhost; dbname=php_testing', 'root', ',70gIiP5,Ry@');
-$db->prepare('INSERT INTO pthreads (email) VALUES(:email)');
-
 // the threads
 class FileTreatments extends Threads {
 	public $file;
@@ -44,7 +40,6 @@ class FileTreatments extends Threads {
 			}
 
 			// do stuff here
-			$db->execute(array('email' => "'$line'"));
 
 			$lineRead++;
 		}
